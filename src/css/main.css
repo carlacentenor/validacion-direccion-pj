@@ -49,13 +49,23 @@ footer {
   border: none;
   color: white;
   border-radius: 5px;
+
 }
 
-.num-dpto .num-dpto__input {
+ .num-dpto__input {
   width: 50px;
   border: 2px solid #009774;
   border-radius: 5px;
   padding-left: 10px;
+  
+}
+
+.num-dpto__input:focus{
+  outline: none;
+}
+
+.inline {
+  display: inline-block;
 }
 
 .pac-container:after {

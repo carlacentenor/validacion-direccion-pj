@@ -204,13 +204,9 @@ const selectTypeHome = () => {
 
 // Función que muestra y oculta el input de num de dpto
 const showNumDpto = () => {
-  let template = `<div class="container num-dpto">
-                      <div class="row">
-                         <div class="col-6 offset-5">
-                            <span>Número</span>
+  let template = `<div class="num-dpto">
+                            <span>Nº</span>
                             <input type="text" class="num-dpto__input number-dpto" name="numdpto">
-                        </div>
-                      </div>
                   </div>`;
 
   boxDpto.innerHTML = template;
