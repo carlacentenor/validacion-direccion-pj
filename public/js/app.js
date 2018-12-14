@@ -4,48 +4,10 @@ let map;
 let mapOptions;
 const mapDraw = document.querySelector('#map');
 // DOM selectores
-const referencias = document.querySelector('#referencias');
-const sendInfo = document.querySelector('#send');
-const inputReferences = document.querySelector('#inputReferences');
-const inputType = document.querySelector('#inputType');
-const main = document.querySelector('main');
-const footer = document.querySelector('footer');
-const radioTypeHome = document.querySelector('#radiotipo');
-const boxDpto = document.querySelector('#box-dpto-number');
-const references = document.querySelector('#referencias');
-
-let validateInputAddress = false;
-let validateType = false;
-let validateReferences = false;
 
 
-const activeButton = () => {
-  if (validateInputAddress && validateReferences && validateType) {
-    sendInfo.setAttribute('disabled', false);
-    sendInfo.classList.remove('btn-desactive');
-  }
-}
 
-const desactiveButton = () => {
-  sendInfo.setAttribute('disabled', 'disabled');
-  sendInfo.classList.add('btn-desactive');
-}
 
-const getValueRadio = (name) => {
-  let value = document.querySelector(`input[name="${name}"]:checked`).value;
-  return value;
-}
-
-const validateTextReferences = () => {
-  if (references.value) {
-    validateReferences = true;
-    inputReferences.value = referencias.value;
-    activeButton();
-  } else {
-    validateReferences = false;
-    desactiveButton();
-  }
-}
 
 
 function initMap() {
@@ -178,43 +140,3 @@ const deleteMarkers = () => {
   clearMarkers();
   markers = [];
 }
-
-/**Valores de Input Radio Button */
-
-const selectTypeHome = () => {
-  let typeHome = getValueRadio('tipo');
-  if (typeHome == 'Departamento') {
-    // main.classList.add('redefine-main');
-    showNumDpto();
-    validateType = true;
-    activeButton();
-    inputType.value = typeHome;
-  } else if (typeHome == 'Casa') {
-    inputType.value = typeHome;
-    validateType = true;
-    // main.classList.remove('redefine-main');
-    activeButton();
-    boxDpto.innerHTML = '';
-  } else {
-    validateType = false;
-    desactiveButton();
-  }
-
-}
-
-// Función que muestra y oculta el input de num de dpto
-const showNumDpto = () => {
-  let template = `<div class="num-dpto">
-                            <span>Nº</span>
-                            <input type="text" class="num-dpto__input number-dpto" name="numdpto">
-                  </div>`;
-
-  boxDpto.innerHTML = template;
-}
-
-
-//Eventos
-references.addEventListener('keyup', validateTextReferences);
-radioTypeHome.addEventListener('change', selectTypeHome);
-
-desactiveButton();
